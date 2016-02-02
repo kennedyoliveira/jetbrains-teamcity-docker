@@ -1,0 +1,23 @@
+teamcity-server:
+    build: 
+      teamcity-server
+    container_name:
+      teamcity-server
+    ports:
+      - "8111:8111" 
+    volumes:
+      - ./teamcity-server-data:/var/lib/teamcity
+    links:
+      - postgres
+
+postgres-teamcity:
+    build: 
+      postgres-teamcity
+    container_name:
+      postgres-teamcity
+    ports:
+      - "5432"
+    environment:
+      - POSTGRES_PASSWORD
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data

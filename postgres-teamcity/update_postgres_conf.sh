@@ -1,0 +1,2 @@
+sed -i.bak -r 's|shared_buffers[[:space:]]*=[[:space:]]*[[:digit:]]*[[:alpha:]]*|shared_buffers = 512MB|' /var/lib/postgresql/data/postgresql.conf
+sed -i.bak -r 's/#(synchronous_commit[[:space:]]*=[[:space:]]*)(on|off|local|remote_write)/\1 off/1' /var/lib/postgresql/data/postgresql.conf
