@@ -15,9 +15,6 @@ RUN sed -i -e "s/\.*<\/Host>.*$/<Valve className=\"org.apache.catalina.valves.Re
 # Create the directory for jdbc drivers
 RUN mkdir -p $TEAMCITY_DATA_PATH/lib/jdbc
 
-# Download the JDBC driver and put in the path
-ADD ["https://jdbc.postgresql.org/download/$TEAMCITY_POSTGRE_JDBC_DRIVER", "$TEAMCITY_DATA_PATH"]
-
 # Default teamcity port
 EXPOSE 8111
 
