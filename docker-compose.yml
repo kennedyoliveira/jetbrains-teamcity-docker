@@ -8,7 +8,7 @@ teamcity-server:
     volumes:
       - ./teamcity-server-data:/var/lib/teamcity
     links:
-      - postgres
+      - postgres-teamcity
 
 postgres-teamcity:
     build: 
