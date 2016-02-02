@@ -28,6 +28,13 @@ The super easy way with docker compose and the easy way with docker images.
 - Start the instances 
 
   `docker-compose up -d`
+  
+- Open your localhost:8111 and there will be your TeamCity!
+- When selecting the database you can simple select Postgres, click in refresh jdbc driver, and use the credentials below:
+	- host: postgres-teamcity
+	- username: teamcity
+	- password: teamcity
+	- database: teamcity
 
 Done! You can access your localhost:8111 and there will be your new TeamCity!
 
