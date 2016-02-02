@@ -6,8 +6,17 @@ ENV TEAMCITY_VERSION 9.1.6
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 ENV TEAMCITY_POSTGRE_JDBC_DRIVER postgresql-9.4.1207.jre7.jar
 
+# Update the package manager
+RUN apk update
+
+# Updates the packages
+RUN apk upgrade
+
 # Install curl
-RUN apk update && apk add curl
+RUN apk add curl
+
+# Run the script to update java cacerts, it should be runned by the image base, but for some reason its not running
+RUN /etc/ca-certificates/update.d/java-cacerts
 
 # Clean APK cache
 RUN rm -rf /var/cache/apk/*
