@@ -7,6 +7,8 @@ teamcity-server:
       - "8111:8111" 
     volumes:
       - ./teamcity-server-data:/var/lib/teamcity
+    environment:
+      TEAMCITY_SERVER_MEM_OPTS: -Xmx1024m
     links:
       - postgres-teamcity
 
