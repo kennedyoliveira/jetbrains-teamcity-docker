@@ -2,9 +2,9 @@ FROM iron/java
 
 MAINTAINER Kennedy Oliveira <kennedy.oliveira@outlook.com>
 
-ENV TEAMCITY_VERSION 9.1.6
+ENV TEAMCITY_VERSION 9.1.7
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
-ENV TEAMCITY_POSTGRE_JDBC_DRIVER postgresql-9.4.1207.jre7.jar
+ENV TEAMCITY_POSTGRE_JDBC_DRIVER postgresql-9.4.1208.jre7.jar
 
 # Update the package manager
 RUN apk update
