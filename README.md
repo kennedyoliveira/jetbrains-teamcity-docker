@@ -82,3 +82,9 @@ Done! You can access your localhost:8111 and there will be your new TeamCity!
 	`docker-compose restart teamcity-server`
 
 Done!
+
+
+### Updating to new versions
+
+- When updating minor changes like from 9.1.6 -> 9.1.7 shouldn't be any problem and is just run `docker-compose build` to build the new images and `docker-compose up -d` to run the new images.
+- When updating major changes like from 9.x.y to 9.x + 1 or 10.x i'll post information here because it depends on JetBrains if the changes will have any impact or need anything special to migrate.
