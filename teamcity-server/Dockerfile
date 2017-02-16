@@ -1,8 +1,7 @@
-FROM iron/java
-
+FROM kennedyoliveira/java8
 MAINTAINER Kennedy Oliveira <kennedy.oliveira@outlook.com>
 
-ENV TEAMCITY_VERSION 10.0
+ENV TEAMCITY_VERSION 10.0.4
 ENV TEAMCITY_DATA_PATH /var/lib/teamcity
 ENV TEAMCITY_POSTGRE_JDBC_DRIVER postgresql-9.4.1209.jar
 
@@ -10,20 +9,15 @@ ENV TEAMCITY_POSTGRE_JDBC_DRIVER postgresql-9.4.1209.jar
 RUN apk update && \
     apk upgrade && \
     apk add curl && \
-    /etc/ca-certificates/update.d/java-cacerts && \
-    rm -rf /var/cache/apk/*
-
-# Create dir for TeamCity installation
-RUN mkdir -p /opt
-
-# Get and install teamcity
-RUN curl -L http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.tar.gz | tar xz -C /opt
-
-# Enable the correct Valve when running behind a proxy
-RUN sed -i -e "s/\.*<\/Host>.*$/<Valve className=\"org.apache.catalina.valves.RemoteIpValve\" protocolHeader=\"x-forwarded-proto\" \/><\/Host>/" /opt/TeamCity/conf/server.xml 
-
-# Create the directory for jdbc drivers
-RUN mkdir -p $TEAMCITY_DATA_PATH/lib/jdbc
+    rm -rf /var/cache/apk/* && \
+    # Create dir for TeamCity installation
+    mkdir -p /opt && \
+    # Get and install teamcity
+    curl -L http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.tar.gz | tar xz -C /opt && \
+    # Enable the correct Valve when running behind a proxy
+    sed -i -e "s/\.*<\/Host>.*$/<Valve className=\"org.apache.catalina.valves.RemoteIpValve\" protocolHeader=\"x-forwarded-proto\" \/><\/Host>/" /opt/TeamCity/conf/server.xml && \
+    # Create the directory for jdbc drivers
+    mkdir -p $TEAMCITY_DATA_PATH/lib/jdbc
 
 # Default teamcity port
 EXPOSE 8111

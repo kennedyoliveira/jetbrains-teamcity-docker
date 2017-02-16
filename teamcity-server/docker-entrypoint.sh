@@ -7,7 +7,7 @@ mkdir -p $TEAMCITY_DATA_PATH/lib/jdbc $TEAMCITY_DATA_PATH/config
 if [ ! -f "$TEAMCITY_DATA_PATH/lib/jdbc/$TEAMCITY_POSTGRE_JDBC_DRIVER" ];
 then
     echo "Downloading postgress JDBC driver..."
-    wget -P $TEAMCITY_DATA_PATH/lib/jdbc https://jdbc.postgresql.org/download/$TEAMCITY_POSTGRE_JDBC_DRIVER
+    curl -L https://jdbc.postgresql.org/download/$TEAMCITY_POSTGRE_JDBC_DRIVER -o $TEAMCITY_DATA_PATH/lib/jdbc/$TEAMCITY_POSTGRE_JDBC_DRIVER
 fi
 
 if [ "$1" = "migrate" ];
