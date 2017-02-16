@@ -1,10 +1,10 @@
 teamcity-server:
-    build: 
+    build:
       teamcity-server
     container_name:
       teamcity-server
     ports:
-      - "8111:8111" 
+      - "8111:8111"
     volumes:
       - ./teamcity-server-data:/var/lib/teamcity
     environment:
@@ -13,7 +13,7 @@ teamcity-server:
       - postgres-teamcity
 
 postgres-teamcity:
-    build: 
+    build:
       postgres-teamcity
     container_name:
       postgres-teamcity
